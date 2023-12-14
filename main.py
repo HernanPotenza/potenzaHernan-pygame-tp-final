@@ -1,15 +1,10 @@
 import pygame as pg
-from models.constantes import *
-from models.player.main_player import *
-from models.enemy.enemy import *
+from models.constantes import CONFIG_JSON
 from stage import *
+from menu import Menu
 
-#from constantes import (
-#   ALTO_VENTANA, ANCHO_VENTANA, FPS
-#)
 
-screen = pg.display.set_mode((ANCHO_VENTANA, ALTO_VENTANA))
-pg.init()
-clock = pg.time.Clock()
 
-Stage(screen, clock)
+
+start_menu = Menu(CONFIG_JSON)
+start_menu.main_menu()

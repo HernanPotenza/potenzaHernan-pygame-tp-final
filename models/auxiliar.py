@@ -9,8 +9,7 @@ class SurfaceManager:
         frame_width = int(surface_img.get_width()/cols)
         frame_height = int(surface_img.get_height()/rows)
 
-        print(f'{frame_width} + {frame_height}')
-        
+
         for row in range(rows):
             for column in range(0, cols, step):
                 x_axis = column * frame_width

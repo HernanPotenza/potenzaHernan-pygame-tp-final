@@ -1,0 +1,304 @@
+{
+    "stages": {
+        "stage_1": {
+            "id": 1,
+            "background_img": "assets/img/background/fondo1.jpg",
+            "player_data": {
+                "floor_level": 450,
+                "coord_x": 0,
+                "coord_y": 0,
+                "hp": 400,
+                "walk_speed": 10,
+                "speed_run": 12,
+                "gravity": 16,
+                "jump": 15,
+                "damage_cooldown": 300,
+                "frame_rate": 60,
+                "take_damage_again": 0
+            },
+            "enemies_data": {
+                    "enemy_1": {
+                        "floor_level": 450,
+                        "pos_x" : 500,
+                        "pos_y" : 400,
+                        "speed_walk": 25,
+                        "speed_run": 12,
+                        "gravity": 15,
+                        "jump": 32,
+                        "hp": 100,
+                        "damage": 2
+                    },
+                    "enemy_2": {
+                        "floor_level": 450,
+                        "pos_x" : 350,
+                        "pos_y" : 400,
+                        "speed_walk": 25,
+                        "speed_run": 12,
+                        "gravity": 15,
+                        "jump": 32,
+                        "hp": 100,
+                        "damage": 2
+                    }
+                },
+            "platforms_data" : {
+                "platform_1":{
+                    "id": 1,
+                    "pos_x": 50,
+                    "pos_y": 180,
+                    "size_x": 7,
+                    "size_y": 1
+                },
+                "platform_2":{
+                    "id": 2,
+                    "pos_x": 560,
+                    "pos_y": 290,
+                    "size_x": 4,
+                    "size_y": 1
+                },
+                "platform_3":{
+                    "id": 3,
+                    "pos_x": 630,
+                    "pos_y": 100,
+                    "size_x": 4,
+                    "size_y": 1
+                }
+            },
+            "coins_data": {
+                "coin_1":{
+                    "coin_img": "assets/img/coin/coin.png",
+                    "pos_x": 80,
+                    "pos_y": 130,
+                    "size_x": 40,
+                    "size_y": 40,
+                    "frame_rate": 200,
+                    "coin_heal": 50,
+                    "coin_points": 20
+                },
+                "coin_2":{
+                    "coin_img": "assets/img/coin/coin.png",
+                    "pos_x": 590,
+                    "pos_y": 240,
+                    "size_x": 40,
+                    "size_y": 40,
+                    "frame_rate": 200,
+                    "coin_heal": 50,
+                    "coin_points": 20
+                },
+                "coin_3":{
+                    "coin_img": "assets/img/coin/coin.png",
+                    "pos_x": 660,
+                    "pos_y": 350,
+                    "size_x": 40,
+                    "size_y": 40,
+                    "frame_rate": 200,
+                    "coin_heal": 50,
+                    "coin_points": 20
+                }
+            }
+        },
+        "stage_2": {
+            "id": 2,
+            "background_img": "assets/img/background/fondo2.jpg",
+            "player_data": {
+                "floor_level": 550,
+                "idle_sprite": "x",
+                "run_sprite": "x",
+                "jump_sprite": "x",
+                "coord_x": 0,
+                "coord_y": 0,
+                "hp": 400,
+                "walk_speed": 10,
+                "speed_run": 12,
+                "gravity": 16,
+                "jump": 15,
+                "damage_cooldown": 300,
+                "frame_rate": 60,
+                "take_damage_again": 0
+            },
+            "enemies_data": {
+                    "enemy_1": {
+                        "floor_level": 550,
+                        "pos_x" : 5,
+                        "pos_y" : 400,
+                        "speed_walk": 10,
+                        "speed_run": 12,
+                        "gravity": 15,
+                        "jump": 32,
+                        "hp": 5,
+                        "damage": 2
+                    },
+                    "enemy_2": {
+                        "floor_level": 550,
+                        "pos_x" : 750,
+                        "pos_y" : 400,
+                        "speed_walk": 25,
+                        "speed_run": 12,
+                        "gravity": 15,
+                        "jump": 32,
+                        "hp": 200,
+                        "damage": 2
+                    }
+            },
+            "platforms_data" : {
+                "platform_1":{
+                    "id": 1,
+                    "pos_x": 150,
+                    "pos_y": 400,
+                    "size_x": 12,
+                    "size_y": 1
+                }
+            },
+            "coins_data": {
+                "coin_1":{
+                    "coin_img": "assets/img/coin/coin.png",
+                    "pos_x": 150,
+                    "pos_y": 350,
+                    "size_x": 40,
+                    "size_y": 40,
+                    "frame_rate": 200,
+                    "coin_heal": 50,
+                    "coin_points": 20
+                },
+                "coin_2":{
+                    "coin_img": "assets/img/coin/coin.png",
+                    "pos_x": 600,
+                    "pos_y": 350,
+                    "size_x": 40,
+                    "size_y": 40,
+                    "frame_rate": 200,
+                    "coin_heal": 50,
+                    "coin_points": 20
+                },
+                "coin_3":{
+                    "coin_img": "assets/img/coin/coin.png",
+                    "pos_x": 350,
+                    "pos_y": 150,
+                    "size_x": 40,
+                    "size_y": 40,
+                    "frame_rate": 200,
+                    "coin_heal": 50,
+                    "coin_points": 20
+                }
+            }
+        },
+        "stage_3": {
+            "id": 3,
+            "background_img": "assets/img/background/fondo3.jpg",
+            "player_data": {
+                "floor_level": 480,
+                "idle_sprite": "x",
+                "run_sprite": "x",
+                "jump_sprite": "x",
+                "coord_x": 0,
+                "coord_y": 0,
+                "hp": 400,
+                "walk_speed": 10,
+                "speed_run": 12,
+                "gravity": 16,
+                "jump": 15,
+                "damage_cooldown": 300,
+                "frame_rate": 60,
+                "take_damage_again": 0
+            },
+            "enemies_data": {
+                "enemy_1": {
+                    "floor_level": 480,
+                    "pos_x" : 500,
+                    "pos_y" : 400,
+                    "speed_walk": 25,
+                    "speed_run": 12,
+                    "gravity": 15,
+                    "jump": 32,
+                    "hp": 100,
+                    "damage": 2
+                },
+                "enemy_2": {
+                    "floor_level": 480,
+                    "pos_x" : 300,
+                    "pos_y" : 400,
+                    "speed_walk": 25,
+                    "speed_run": 12,
+                    "gravity": 15,
+                    "jump": 32,
+                    "hp": 100,
+                    "damage": 2
+                }
+            },
+            "spawn_data":{
+                    "floor_level": 420,
+                    "pos_x": 750,
+                    "pos_y": 420,
+                    "hp": 100,
+                    "damage": 5,
+                    "spawn_cooldown": 5,
+                    "spawn_enemy_data": 
+                    {
+                        "floor_level": 480,
+                        "pos_x" : 800,
+                        "pos_y" : 400,
+                        "speed_walk": 25,
+                        "speed_run": 12,
+                        "gravity": 15,
+                        "jump": 32,
+                        "hp": 100,
+                        "damage": 2
+                    }
+            },
+            "platforms_data" : {
+                "platform_1":{
+                    "id": 1,
+                    "pos_x": 50,
+                    "pos_y": 180,
+                    "size_x": 7,
+                    "size_y": 1
+                },
+                "platform_2":{
+                    "id": 2,
+                    "pos_x": 560,
+                    "pos_y": 290,
+                    "size_x": 4,
+                    "size_y": 1
+                },
+                "platform_3":{
+                    "id": 3,
+                    "pos_x": 630,
+                    "pos_y": 100,
+                    "size_x": 4,
+                    "size_y": 1
+                }
+            },
+            "coins_data": {
+                "coin_1":{
+                    "coin_img": "assets/img/coin/coin.png",
+                    "pos_x": 80,
+                    "pos_y": 130,
+                    "size_x": 40,
+                    "size_y": 40,
+                    "frame_rate": 200,
+                    "coin_heal": 50,
+                    "coin_points": 20
+                },
+                "coin_2":{
+                    "coin_img": "assets/img/coin/coin.png",
+                    "pos_x": 590,
+                    "pos_y": 240,
+                    "size_x": 40,
+                    "size_y": 40,
+                    "frame_rate": 200,
+                    "coin_heal": 50,
+                    "coin_points": 20
+                },
+                "coin_3":{
+                    "coin_img": "assets/img/coin/coin.png",
+                    "pos_x": 660,
+                    "pos_y": 50,
+                    "size_x": 40,
+                    "size_y": 40,
+                    "frame_rate": 200,
+                    "coin_heal": 50,
+                    "coin_points": 20
+                }
+            }
+        }
+    }
+}

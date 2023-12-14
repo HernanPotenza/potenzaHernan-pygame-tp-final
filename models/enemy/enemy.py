@@ -2,66 +2,62 @@ import pygame as pg
 from models.auxiliar import SurfaceManager as sf
 from models.constantes import *
 
-class Enemy:
-    def __init__(self, coord_x, coord_y, frame_rate = 100, speed_walk = 25, speed_run = 12, gravity = 15, jump = 32, hp = 100):
-        self.__iddle_r = sf.get_surface_from_spritesheet('jueguito_secundario/assets/img/enemy/idle/idle.jpg', 4, 1, flip=True)
+class Enemy(pg.sprite.Sprite):
+    def __init__(self, enemy_data):
+        super().__init__()
+        self.__iddle_r = sf.get_surface_from_spritesheet('assets/img/enemy/idle/idle.jpg', 4, 1, flip=True)
         for imagen in range(len(self.__iddle_r)):
-            self.__iddle_r[imagen] = pg.transform.scale(self.__iddle_r[imagen], (93, 101))  
-        self.__iddle_l = sf.get_surface_from_spritesheet('jueguito_secundario/assets/img/enemy/idle/idle.jpg', 4, 1)
+            self.__iddle_r[imagen] = pg.transform.scale(self.__iddle_r[imagen], (ENEMY_WIDTH, ENEMY_HEIGHT))  
+        self.__iddle_l = sf.get_surface_from_spritesheet('assets/img/enemy/idle/idle.jpg', 4, 1)
         for imagen in range(len(self.__iddle_r)):
-            self.__iddle_r[imagen] = pg.transform.scale(self.__iddle_r[imagen], (93, 101))
+            self.__iddle_r[imagen] = pg.transform.scale(self.__iddle_r[imagen], (ENEMY_WIDTH, ENEMY_HEIGHT))
         
-        self.__walk_r = sf.get_surface_from_spritesheet('jueguito_secundario/assets/img/enemy/walk/walk.jpg', 5, 1, flip=True)
+        self.__walk_r = sf.get_surface_from_spritesheet('assets/img/enemy/walk/walk.png', 9, 1)
         for imagen in range(len(self.__walk_r)):
-            self.__walk_r[imagen] = pg.transform.scale(self.__walk_r[imagen], (93, 101))  
-        self.__walk_l = sf.get_surface_from_spritesheet('jueguito_secundario/assets/img/enemy/walk/walk.jpg', 5, 1)
+            self.__walk_r[imagen] = pg.transform.scale(self.__walk_r[imagen], (ENEMY_WIDTH, ENEMY_HEIGHT))  
+        self.__walk_l = sf.get_surface_from_spritesheet('assets/img/enemy/walk/walk.png', 9, 1, flip=True)
         for imagen in range(len(self.__walk_l)):
-            self.__walk_l[imagen] = pg.transform.scale(self.__walk_l[imagen], (93, 101))
+            self.__walk_l[imagen] = pg.transform.scale(self.__walk_l[imagen], (ENEMY_WIDTH, ENEMY_HEIGHT))
 
-
-        # self.run_r = sf.get_surface_from_spritesheet(*****, *, *)
-        # self.run_l = sf.get_surface_from_spritesheet(*****, *, *, *)
-
-        self.__coord_x = coord_x
-        self.__coord_y = coord_y
+        self.coord_x = enemy_data.get('pos_x')
+        self.coord_y = enemy_data.get('pos_y')
+        self.__frame_rate = FPS
+        self.speed_walk = enemy_data.get('speed_walk')
+        self.speed_run = enemy_data.get('speed_run')
+        self.__gravity = enemy_data.get('gravity') 
+        self.__jump = enemy_data.get('jump')
+        self.__hp = enemy_data.get('hp')        
+        self.floor_level = enemy_data.get('floor_level')
+        self.damage = enemy_data.get('damage')
+        self.score = enemy_data.get('score')
+        
         self.__move_x = 0
         self.__move_y = 0
-        self.__speed_walk = speed_walk
-        self.__speed_run = speed_run
-        self.__frame_rate = frame_rate
         self.__enemy_move_time = 0
         self.__enemy_animation_time = 0
-        self.__gravity = gravity
-        self.__jump = jump
-        self.__is_jumping = False
         self.__initial_frame = 0
         self.__actual_animation = self.__iddle_r
         self.__actual_img_animation = self.__actual_animation[self.__initial_frame]
         self.rect = self.__actual_img_animation.get_rect()
-        self.rect.x = 300
-        self.rect.y = 300
+        self.rect.x = self.coord_x
+        self.rect.y = self.coord_y
         self.__is_looking_right = True
         self.__going_right = True
-        self.__hp = hp
-        self.__flag = True
         self.is_alive = True
         self.score = 100
 
 
     def get_hp(self):
         return self.__hp
-    
+
     def set_hp(self, nuevo_hp):
         self.__hp += nuevo_hp
-
-
-
 
 
     def __set_borders_limits(self):
         pixels_move = 0
         if self.__move_x > 0:
-            if self.rect.x < ANCHO_VENTANA - self.__actual_img_animation.get_width():
+            if self.rect.x < WINDOW_WIDTH - self.__actual_img_animation.get_width():
                 pixels_move = self.__move_x
             else:
                     self.__move_x = 0
@@ -90,8 +86,11 @@ class Enemy:
             self.rect.x += self.__move_x
             self.rect.y += self.__move_y
             # Parte relacionado a saltar
-            if self.rect.y < 350:
+
+            if self.rect.y + ENEMY_HEIGHT < (self.floor_level - self.__gravity):
                 self.rect.y += self.__gravity
+            elif self.rect.y + ENEMY_HEIGHT < self.floor_level:
+                self.rect.y += self.floor_level - (self.rect.y + ENEMY_HEIGHT)
 
 
     def walk(self, direction: str = 'Right'):
@@ -126,18 +125,10 @@ class Enemy:
             self.draw(screen)
 
 
-    def kill(self):
-        self.is_alive = False
-        self.rect.x = 800
-        self.rect.y = 600
-        
-
-
     def take_damage(self, damage):
         self.__hp -= damage
-        print(self.__hp)
         if self.__hp <= 0:
-            self.kill()
+            self.is_alive = False
 
 
     def do_animation(self, delta_ms):
@@ -160,8 +151,3 @@ class Enemy:
         self.__actual_img_animation = self.__actual_animation[self.__initial_frame]
         screen.blit(self.__actual_img_animation, self.rect)
 
-
-
-
-    # def move(self):
-    #     self.__move_x = self.__speed_walk
